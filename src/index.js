@@ -5,11 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';  
 import { Router, Route, browserHistory } from 'react-router';  
 import configureStore from './store/configureStore'; 
-
-/**
- * Need to import bootstrap css 
- */
-import 'bootstrap/dist/css/bootstrap.min.css';
+ 
 
 /** 
  * Create redux store object 
