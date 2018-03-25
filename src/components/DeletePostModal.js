@@ -2,44 +2,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';   
 import { Modal, Button } from 'react-bootstrap';
 import { hideModal } from '../actions/modalActions'; 
+import BasicModal from './BasicModal'; 
 
-class DeletePostModal extends Component {
+class DeletePostModal extends Component { 
 
-    constructor(props) {
-        super(props); 
-        this.handleShow = this.handleShow.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-
-        this.state = {
-            show: true
-        };
-    }  
-
-    handleClose() {
-        this.setState({ show: false });
+    handleDeletePost( ) {
+        console.log('Deleting post');
         this.props.dispatch(hideModal());
-    }
-    
-    handleShow() {
-        this.setState({ show: true });
     }
     
  
     render() { 
+
+        const body = (
+            <div> 
+                <h5>NAME:  {this.props.user.name}</h5>
+                <h5>USER:  {this.props.user.username}</h5>
+                <h5>EMAIL: {this.props.user.email}</h5>
+            </div>
+        ); 
+
+        const customButton = (
+            <Button
+                bsStyle="success"
+                onClick={
+                    e => this.handleDeletePost() 
+                }
+            >
+                Custom Click
+            </Button>
+        ); 
+
+
         return (
-            <Modal show={this.state.show} onHide={this.handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4>{this.props.title}</h4>
-                    <h5>{this.props.user.name}</h5>
-                
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={this.handleClose}>Close</Button>
-                </Modal.Footer>
-            </Modal>
+            <BasicModal 
+                title={this.props.title} 
+                body={body}
+                button={customButton}
+            />         
         ); 
     }
 }

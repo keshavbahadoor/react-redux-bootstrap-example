@@ -20,7 +20,6 @@ class UserTable extends Component {
 
     viewPostsButtonClick( user ) {
         console.log('view posts', user); 
-
         this.props.dispatch(showDeletePostModal(user)); 
     }
 
