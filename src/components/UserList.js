@@ -1,6 +1,8 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux'; 
 import { Table, Button } from 'react-bootstrap'; 
+import {loadUsers} from '../actions/userActions';
+import { showDeletePostModal } from '../actions/modalActions';
 
 
 class UserTable extends Component {
@@ -13,10 +15,17 @@ class UserTable extends Component {
     } 
 
     componentDidMount() {        
+        this.props.dispatch(loadUsers());
+    }
+
+    viewPostsButtonClick( user ) {
+        console.log('view posts', user); 
+
+        this.props.dispatch(showDeletePostModal(user)); 
     }
 
     render() {
- 
+
         /** 
          * Why Keys are important in reactjs: 
          * https://blog.arkency.com/2014/10/react-dot-js-and-dynamic-children-why-the-keys-are-important/
@@ -27,7 +36,11 @@ class UserTable extends Component {
                 <td>{user.name}</td>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
-                <td><Button bsStyle="primary">View Posts</Button></td>
+                <td><Button bsStyle="primary"
+                        onClick={ e => this.viewPostsButtonClick(user) }
+                    >
+                    View Posts                
+                </Button></td>
             </tr>
         )); 
 

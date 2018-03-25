@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes'; 
-import initalState from '../store/initialState'; 
+import initialState from '../store/initialState'; 
  
-export default function userReducer(state = initalState.users, action) {
+export default function userReducer(state = initialState.users, action) {
     switch(action.type) {
         case types.LOAD_USERS_SUCCESS:
             return action.users; 

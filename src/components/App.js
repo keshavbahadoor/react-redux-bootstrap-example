@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux'; 
 import UserList from './UserList';
+import ModalRoot from './ModalRoot';
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
     render() { 
         return (
             <div>
+                <ModalRoot />
                 <h1>This is my app</h1>
                 <UserList/>
             </div>

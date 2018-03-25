@@ -3,5 +3,7 @@
  * our application gets complex. 
  */
 export default {
-    users: []
+    users: [], 
+    modalType: null, 
+    modalProps: {} 
 }
